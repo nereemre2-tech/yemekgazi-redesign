@@ -1,26 +1,188 @@
 <!doctype html>
-<html lang="en">
-
+<html lang="tr">
   <head>
+    <!-- Tasarım yaklaşımı: Öğle Arası Editoryali — sıcak, dokunsal ve bilgi öncelikli kampüs yemek rehberi. -->
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-    <title>Yemekgazi — Sofraya Yakın</title>    
-    <!-- THIS IS THE START OF A COMMENT BLOCK, BLOCK TO BE DELETED: Google Fonts here, example:
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <meta name="description" content="Gazi Üniversitesi güncel yemekhane menüsü için bağımsız tasarım prototipi." />
+    <title>Yemekgazi — Bugünün tepsisinde ne var?</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    THIS IS THE END OF A COMMENT BLOCK, BLOCK TO BE DELETED -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
   </head>
-
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-    <script
-      defer
-      src="%VITE_ANALYTICS_ENDPOINT%/umami"
-      data-website-id="%VITE_ANALYTICS_WEBSITE_ID%"></script>
-  </body>
+    <div class="page-shell">
+      <header class="site-header" id="top">
+        <a class="brand" href="#top" aria-label="Yemekgazi ana sayfa">
+          <img src="/manus-storage/yemekgazi-mark_71c14b36.png" alt="Yemekgazi sembolü" />
+          <span class="brand-wordmark"><em>yemek</em>gazi</span>
+        </a>
 
+        <nav class="desktop-nav" aria-label="Ana menü">
+          <a href="#menu">Günlük menü</a>
+          <a href="#takip">Takip araçları</a>
+          <a href="#bilgi">Nasıl çalışır?</a>
+        </nav>
+
+        <div class="header-actions">
+          <button class="icon-button" id="themeButton" type="button" aria-label="Görünümü değiştir" title="Görünümü değiştir">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v2.25M12 18.75V21M21 12h-2.25M5.25 12H3M18.36 5.64l-1.59 1.59M7.23 16.77l-1.59 1.59M18.36 18.36l-1.59-1.59M7.23 7.23 5.64 5.64"/><circle cx="12" cy="12" r="3.75"/></svg>
+          </button>
+          <button class="language-button" id="languageButton" type="button" aria-label="Dil değiştir">EN</button>
+          <button class="header-reminder" id="headerReminder" type="button">Hatırlat</button>
+        </div>
+      </header>
+
+      <main>
+        <section class="intro-band" aria-labelledby="pageTitle">
+          <div class="intro-copy">
+            <p class="eyebrow"><span></span> Gazi Üniversitesi · Yemekhane Rehberi</p>
+            <h1 id="pageTitle">Bugünün tepsisinde<br /><em>ne var?</em></h1>
+            <p class="intro-text">Resmî menüleri, servis saatlerini ve küçük hatırlatmaları tek, sakin bir ekranda topla.</p>
+            <a class="text-action" href="#menu">Menüyü gör <span aria-hidden="true">↓</span></a>
+          </div>
+          <figure class="hero-still">
+            <img src="/manus-storage/yemekgazi-hero-table_764bff40.png" alt="Gündelik üniversite öğle yemeği tepsisi" />
+            <figcaption>Her gün, karar vermeyi biraz daha kolaylaştırır.</figcaption>
+          </figure>
+        </section>
+
+        <section class="date-rail" aria-label="Menü tarihi seçimi">
+          <button class="date-arrow" id="previousDay" type="button" aria-label="Önceki gün">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.5 5-7 7 7 7"/></svg>
+          </button>
+          <button class="date-main" id="dateButton" type="button" aria-label="Tarih seç">
+            <span class="date-label">Menü tarihi</span>
+            <strong id="dateText">24 Ağustos 2026, Pazartesi</strong>
+          </button>
+          <button class="date-arrow" id="nextDay" type="button" aria-label="Sonraki gün">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 5 7 7-7 7"/></svg>
+          </button>
+        </section>
+
+        <section class="menu-zone" id="menu" aria-labelledby="menuTitle">
+          <div class="menu-heading-wrap">
+            <div class="menu-heading">
+              <p class="eyebrow"><span></span> Günlük menü</p>
+              <h2 id="menuTitle">Yemek sırası</h2>
+            </div>
+            <button class="source-link" id="sourceButton" type="button">
+              Resmî kaynağa git
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5M19 5l-8 8M19 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4"/></svg>
+            </button>
+          </div>
+
+          <div class="location-switch" role="tablist" aria-label="Yemekhane seçimi">
+            <button class="location-tab is-active" data-location="student" type="button" role="tab" aria-selected="true">Öğrenci yemekhanesi</button>
+            <button class="location-tab" data-location="hospital" type="button" role="tab" aria-selected="false">Hastane / stajyer</button>
+          </div>
+
+          <div class="content-layout">
+            <article class="menu-paper">
+              <header class="paper-header">
+                <div>
+                  <p class="paper-location" id="locationTitle">Öğrenci yemekhanesi</p>
+                  <h3 id="mealTitle">Öğle yemeği</h3>
+                </div>
+                <div class="service-data">
+                  <span>Servis</span>
+                  <strong id="serviceTime">11.30 — 14.00</strong>
+                </div>
+              </header>
+
+              <div class="meal-tabs" role="tablist" aria-label="Öğün seçimi">
+                <button class="meal-tab" data-meal="breakfast" type="button" role="tab" aria-selected="false">Kahvaltı</button>
+                <button class="meal-tab is-active" data-meal="lunch" type="button" role="tab" aria-selected="true">Öğle</button>
+                <button class="meal-tab" data-meal="dinner" type="button" role="tab" aria-selected="false">Akşam</button>
+              </div>
+
+              <div class="menu-list" id="menuList" aria-live="polite"></div>
+
+              <footer class="paper-footnote">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 10.5v5M12 7.5h.01"/></svg>
+                <p>Kalori ve içerik bilgileri porsiyon ve reçeteye göre değişebilir. Kesin bilgi için resmî menüyü kontrol et.</p>
+              </footer>
+            </article>
+
+            <aside class="side-column" aria-label="Menü bilgileri ve kısa işlemler">
+              <section class="calorie-note">
+                <p>Toplam enerji</p>
+                <strong id="totalCalories">620–840 <small>kcal</small></strong>
+                <span id="mealCount">4 kalem yemek</span>
+              </section>
+              <div class="quick-actions">
+                <button class="quick-action" id="shareButton" type="button">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="m8.2 10.8 7.6-4.5M8.2 13.2l7.6 4.5"/></svg>
+                  Menüyü paylaş
+                </button>
+                <button class="quick-action" id="reportButton" type="button">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 20V4M6 5h10l-1.8 3L16 11H6"/></svg>
+                  Bir düzeltme bildir
+                </button>
+              </div>
+              <div class="daily-note">
+                <p class="eyebrow"><span></span> Bugün için not</p>
+                <p id="dailyNote">Yoğurtlu ana yemek, yaz meyvesi ve çorbayla dengeli bir tabak.</p>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="planning-section" id="takip" aria-labelledby="planningTitle">
+          <div class="planning-intro">
+            <p class="eyebrow"><span></span> Küçük araçlar</p>
+            <h2 id="planningTitle">Yemek saatini<br /><em>kaçırma.</em></h2>
+            <p>Gerektiğinde haber verelim; fazlası yok. Bildirim, takvim ve hızlı geri bildirim araçları burada.</p>
+          </div>
+          <div class="tool-list">
+            <button class="tool-row" data-tool="telegram" type="button">
+              <span class="tool-index">01</span>
+              <span class="tool-copy"><strong>Günlük bildirim</strong><small>Servisten önce menü gelsin.</small></span>
+              <span class="tool-arrow" aria-hidden="true">↗</span>
+            </button>
+            <button class="tool-row" data-tool="calendar" type="button">
+              <span class="tool-index">02</span>
+              <span class="tool-copy"><strong>Takvimine ekle</strong><small>Ayın menüsünü kendi düzenine al.</small></span>
+              <span class="tool-arrow" aria-hidden="true">↗</span>
+            </button>
+            <button class="tool-row" data-tool="feedback" type="button">
+              <span class="tool-index">03</span>
+              <span class="tool-copy"><strong>Geri bildirim gönder</strong><small>Eksik veya hatalı bilgi varsa yaz.</small></span>
+              <span class="tool-arrow" aria-hidden="true">↗</span>
+            </button>
+          </div>
+        </section>
+
+        <section class="information-strip" id="bilgi" aria-labelledby="infoTitle">
+          <p class="strip-kicker">Neden bu sayfa?</p>
+          <h2 id="infoTitle">Karmaşık ekranlar yerine,<br />sadece <em>günün yemeği.</em></h2>
+          <div class="strip-body">
+            <p>Yemekgazi; Gazi Üniversitesi öğrenci ve hastane/stajyer menülerini, resmî kaynağa erişimi ve hatırlatma araçlarını sade bir akışta bir araya getiren bağımsız bir arayüz önerisidir.</p>
+            <a class="outlined-link" href="#top">Başa dön <span aria-hidden="true">↑</span></a>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <a class="brand footer-brand" href="#top" aria-label="Yemekgazi ana sayfa">
+          <img src="/manus-storage/yemekgazi-mark_71c14b36.png" alt="" />
+          <span class="brand-wordmark"><em>yemek</em>gazi</span>
+        </a>
+        <p>Bağımsız tasarım prototipi. Kesin menü için resmî duyuruyu doğrula.</p>
+        <div class="footer-links"><a href="#menu">Menü</a><a href="#takip">Araçlar</a><a href="#bilgi">Bilgi</a></div>
+      </footer>
+    </div>
+
+    <dialog class="action-dialog" id="actionDialog" aria-labelledby="dialogTitle">
+      <button class="dialog-close" id="dialogClose" type="button" aria-label="Pencereyi kapat">×</button>
+      <p class="eyebrow"><span></span> Yemekgazi</p>
+      <h2 id="dialogTitle">Menü hatırlatması</h2>
+      <p id="dialogText">Servisten ne kadar önce haberdar olmak istediğini seç.</p>
+      <div class="dialog-options" id="dialogOptions"></div>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script type="module" src="/app.js"></script>
+  </body>
 </html>
